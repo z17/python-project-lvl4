@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block title %}Users Title{% endblock %}
+
+{% block content %}
+
+
+    <h1 class="pb-4">{% translate "Users Title" %}</h1>
+        <div class="container">
+            <div class="row font-weight-bold">
+                <div class="col-1 border p-2"><p class="fw-bold">{% translate "ID" %}</p></div>
+                <div class="col border p-2">{% translate "Username" %}</div>
+                <div class="col border p-2">{% translate "Email" %}</div>
+                <div class="col border p-2">{% translate "First Name" %}</div>
+                <div class="col border p-2">{% translate "Second Name" %}</div>
+                <div class="col border p-2">{% translate "Links" %}</div>
+            </div>
+    {% for user in users %}
+
+            <div class="row font-weight-bold">
+                <div class="col-1 border p-2"><p class="fw-bold">{{ user.id  }}</p></div>
+                <div class="col border p-2">{{ user.username  }}</div>
+                <div class="col border p-2">{{ user.email  }}</div>
+                <div class="col border p-2">{{ user.first_name  }}</div>
+                <div class="col border p-2">{{ user.last_name  }}</div>
+                <div class="col border p-2"><a href="/users/{{user.id}}/update/">{% translate "Update" %}</a> |
+                    <a href="/users/{{user.id}}/delete">{% translate "Delete" %}</a> </div>
+            </div>
+    {% endfor %}
+        </div>
+{% endblock %}
