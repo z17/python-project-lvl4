@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block title %}Users Title{% endblock %}
+
+{% block content %}
+<h1 class="pb-4">{% translate "Sign Up" %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-primary">{% translate "Sign Up" %}</button>
+</form>
+{% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-12 02:07+0300\n"
+"POT-Creation-Date: 2022-07-30 18:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,8 +29,18 @@ msgid "MenuHome"
 msgstr "Главная"
 
 #: task_manager/templates/base.html:20
-msgid "MenuLink"
-msgstr "Ссылка"
+msgid "Users"
+msgstr "Пользователи"
+
+#: task_manager/templates/base.html:37
+#: task_manager/templates/users_create.html:8
+#: task_manager/templates/users_create.html:12
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: task_manager/templates/base.html:40
+msgid "Log In"
+msgstr "Войти"
 
 #: task_manager/templates/index.html:10
 msgid "Welcome main text"
@@ -39,3 +49,41 @@ msgstr "Hello world!"
 #: task_manager/templates/index.html:11
 msgid "Welcome full text"
 msgstr "Here we are"
+
+#: task_manager/templates/users.html:10
+msgid "Users Title"
+msgstr "Пользователи"
+
+#: task_manager/templates/users.html:13
+msgid "ID"
+msgstr ""
+
+#: task_manager/templates/users.html:14
+msgid "Username"
+msgstr "Логин"
+
+#: task_manager/templates/users.html:15 task_manager/users.py:18
+msgid "Email"
+msgstr ""
+
+#: task_manager/templates/users.html:16 task_manager/users.py:10
+msgid "First Name"
+msgstr "Имя"
+
+#: task_manager/templates/users.html:17 task_manager/users.py:14
+msgid "Second Name"
+msgstr "Фамилия"
+
+#: task_manager/templates/users.html:18
+#, fuzzy
+#| msgid "MenuLink"
+msgid "Links"
+msgstr "Ссылки"
+
+#: task_manager/templates/users.html:28
+msgid "Update"
+msgstr "Обновить"
+
+#: task_manager/templates/users.html:29
+msgid "Delete"
+msgstr "Удалить"
