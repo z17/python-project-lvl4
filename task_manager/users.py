@@ -16,7 +16,6 @@ class UserCreationForm(UserCreationForm):
     email = forms.EmailField(
         required=True,
         label=_("Email")
-
     )
 
     class Meta(UserCreationForm.Meta):
