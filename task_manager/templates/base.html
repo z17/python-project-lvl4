@@ -33,12 +33,18 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/create/">{% translate "Sign Up" %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/login/">{% translate "Log In" %}</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/logout/">{% translate "Logout" %}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/create/">{% translate "Sign Up" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/login/">{% translate "Log In" %}</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

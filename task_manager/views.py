@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 
 from django.views.generic import CreateView, DeleteView, UpdateView
@@ -40,3 +41,11 @@ class UsersDeleteView(DeleteView):
     model = get_user_model()
     template_name = 'users_delete.html'
     success_url = '/users/'
+
+
+class UserLoginView(LoginView):
+    template_name = 'users_login.html'
+
+
+class UserLogoutView(LogoutView):
+    next_page = '/'
