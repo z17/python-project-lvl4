@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block title %}{% translate "Taks Title" %}{% endblock %}
+
+{% block content %}
+
+
+<h1 class="pb-4">{% translate "Tasks Title" %}</h1>
+
+
+<div class="container">
+    <div class="row mb-4">
+        <a class="btn btn-primary" href="/tasks/create/">{% translate "Create task" %}</a>
+    </div>
+    <div class="row border-bottom font-weight-bold">
+        <div class="col-1 p-2"><p class="fw-bold">{% translate "ID" %}</p></div>
+        <div class="col p-2">{% translate "Name" %}</div>
+        <div class="col p-2">{% translate "Status" %}</div>
+        <div class="col p-2">{% translate "Reporter" %}</div>
+        <div class="col p-2">{% translate "Assignee" %}</div>
+        <div class="col p-2">{% translate "Date" %}</div>
+        <div class="col p-2"></div>
+    </div>
+    {% for task in object_list %}
+    <div class="row"> {{ task.date }} - {{ task.name }}</div>
+    {% empty %}
+    <div class="row">{% translate "No tasks" %}</div>
+    {% endfor %}
+</div>
+{% endblock %}

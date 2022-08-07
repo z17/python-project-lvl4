@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block title %}{% translate "Status Title" %}{% endblock %}
+
+{% block content %}
+
+
+<h1 class="pb-4">{% translate "Status Title" %}</h1>
+
+
+<div class="container">
+    <div class="row mb-4">
+        <a class="btn btn-primary" href="/statuses/create/">{% translate "Create status" %}</a>
+    </div>
+    <div class="row border-bottom font-weight-bold">
+        <div class="col-1  p-2"><p class="fw-bold">{% translate "ID" %}</p></div>
+        <div class="col-9 p-2">{% translate "Name" %}</div>
+        <div class="col  p-2"></div>
+    </div>
+    {% for status in object_list %}
+
+    <div class="row border-bottom">
+        <div class="col-1 p-2"><p class="fw-bold">{{status.id}}</p></div>
+        <div class="col-9 p-2">{{status.name}}</div>
+        <div class="col p-2">
+            <a href="/statuses/{{status.id}}/update/">{% translate "Update" %}</a><br>
+            <a href="/statuses/{{status.id}}/delete">{% translate "Delete" %}</a>
+        </div>
+    </div>
+    {% empty %}
+    <div>{% translate "No tasks" %}</div>
+    {% endfor %}
+</div>
+{% endblock %}
