@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
+from django.urls import reverse
 
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 
@@ -83,17 +84,30 @@ class TaskListView(LoginRequiredMixin, ListView):
     template_name = 'tasks_list.html'
 
 
-class TaskView(LoginRequiredMixin, DetailView):
+class TaskView(DetailView):
     model = Task
+
+    template_name = 'task_detail.html'
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
+    fields = ['name', 'status', 'text', 'assignee', 'reporter']
+    template_name = 'task_create.html'
+
+    def get_success_url(self):
+        return reverse('task', args=(self.object.id,))
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
+    fields = ['name', 'status', 'text', 'assignee', 'reporter']
+    template_name = 'task_update.html'
 
+    def get_success_url(self):
+        return reverse('task', args=(self.object.id,))
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
+    template_name = 'task_delete.html'
+    success_url = '/tasks/'

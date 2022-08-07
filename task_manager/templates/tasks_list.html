@@ -24,7 +24,18 @@
         <div class="col p-2"></div>
     </div>
     {% for task in object_list %}
-    <div class="row"> {{ task.date }} - {{ task.name }}</div>
+    <div class="row border-bottom">
+        <div class="col-1 p-2"><p class="fw-bold">{{task.id}}</p></div>
+        <div class="col p-2">{{task.name}}</div>
+        <div class="col p-2">{{task.status.name}}</div>
+        <div class="col p-2">{{task.reporter}}</div>
+        <div class="col p-2">{{task.assignee}}</div>
+        <div class="col p-2">{{task.date}}</div>
+                <div class="col p-2">
+            <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
+            <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
+        </div>
+    </div>
     {% empty %}
     <div class="row">{% translate "No tasks" %}</div>
     {% endfor %}
