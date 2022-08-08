@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-{% block title %}{% translate "Taks Title" %}{% endblock %}
+{% block title %}{% translate "Tasks Title" %}{% endblock %}
 
 {% block content %}
 
@@ -26,14 +26,16 @@
     {% for task in object_list %}
     <div class="row border-bottom">
         <div class="col-1 p-2"><p class="fw-bold">{{task.id}}</p></div>
-        <div class="col p-2">{{task.name}}</div>
+        <div class="col p-2"><a href="/tasks/{{task.id}}/">{{task.name}}</a></div>
         <div class="col p-2">{{task.status.name}}</div>
         <div class="col p-2">{{task.reporter}}</div>
         <div class="col p-2">{{task.assignee}}</div>
         <div class="col p-2">{{task.date}}</div>
-                <div class="col p-2">
+        <div class="col p-2">
             <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
+            {% if user == task.reporter %}
             <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
+            {% endif %}
         </div>
     </div>
     {% empty %}

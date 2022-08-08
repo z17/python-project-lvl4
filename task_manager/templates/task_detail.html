@@ -2,19 +2,20 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-{% block title %}{% translate "Task:" %} {{task.id}} {{task.name}}{% endblock %}
+{% block title %}{% translate "Task" %}: {{task.id}} {{task.name}}{% endblock %}
 
 {% block content %}
-<h1 class="pb-4">{% translate "Task:" %} {{task.id}} {{task.name}}</h1>
+<h1 class="pb-4">{% translate "Task" %}: {{task.id}} {{task.name}}</h1>
 <p><span class="font-weight-bold">{% translate "Status" %}:</span> {{task.status.name}}</p>
 <p><span class="font-weight-bold">{% translate "Created" %}:</span> {{task.date}}</p>
 <p><span class="font-weight-bold">{% translate "Assignee" %}:</span> {{task.assignee}}</p>
-<p><span class="font-weight-bold">{% translate "Reported" %}:</span> {{task.reporter}}</p>
+<p><span class="font-weight-bold">{% translate "Reporter" %}:</span> {{task.reporter}}</p>
 <h2>{% translate "Text" %}</h2>
 <p>{{task.text}}</p>
 <p>
-
-            <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
-            <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
+    <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
+    {% if user == task.reporter %}
+    <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
+    {% endif %}
 </p>
 {% endblock %}

@@ -92,8 +92,13 @@ class TaskView(DetailView):
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['name', 'status', 'text', 'assignee', 'reporter']
+    fields = ['name', 'status', 'text', 'assignee']
     template_name = 'task_create.html'
+
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.reporter = user
+        return super(TaskCreateView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('task', args=(self.object.id,))
@@ -101,13 +106,24 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['name', 'status', 'text', 'assignee', 'reporter']
+    fields = ['name', 'status', 'text', 'assignee']
     template_name = 'task_update.html'
+
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.reporter = user
+        return super(TaskUpdateView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('task', args=(self.object.id,))
+
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'task_delete.html'
     success_url = '/tasks/'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object().reporter:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
