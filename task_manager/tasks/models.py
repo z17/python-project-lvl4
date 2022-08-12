@@ -1,19 +1,8 @@
 from django.db import models
 from django.conf import settings
 
-
-class Status(models.Model):
-    name = models.CharField(max_length=30, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Label(models.Model):
-    name = models.CharField(max_length=90, unique=True)
-
-    def __str__(self):
-        return self.name
+from task_manager.statuses.models import Status
+from task_manager.labels.models import Label
 
 
 class Task(models.Model):
@@ -30,5 +19,5 @@ class Task(models.Model):
 
 
 class TaskLabel(models.Model):
-    task = models.ForeignKey(Task, on_delete=models.PROTECT)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
     label = models.ForeignKey(Label, on_delete=models.PROTECT)
