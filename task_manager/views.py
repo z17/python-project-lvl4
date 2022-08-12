@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 
-from task_manager.models import Task, Status
+from task_manager.models import Task, Status, Label
 from task_manager.users import UserCreationForm
 
 
@@ -39,11 +39,21 @@ class UsersUpdateView(UpdateView):
     template_name = 'users_update.html'
     success_url = '/users/'
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object():
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
 
 class UsersDeleteView(DeleteView):
     model = get_user_model()
     template_name = 'users_delete.html'
     success_url = '/users/'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object():
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserLoginView(LoginView):
@@ -92,7 +102,7 @@ class TaskView(DetailView):
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['name', 'status', 'text', 'assignee']
+    fields = ['name', 'status', 'text', 'assignee', 'labels']
     template_name = 'task_create.html'
 
     def form_valid(self, form):
@@ -106,7 +116,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['name', 'status', 'text', 'assignee']
+    fields = ['name', 'status', 'text', 'assignee', 'labels']
     template_name = 'task_update.html'
 
     def form_valid(self, form):
@@ -127,3 +137,28 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
         if request.user != self.get_object().reporter:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)
+
+
+class LabelListView(LoginRequiredMixin, ListView):
+    model = Label
+    template_name = 'label_list.html'
+
+
+class LabelCreateView(LoginRequiredMixin, CreateView):
+    model = Label
+    fields = ['name']
+    template_name = 'label_create.html'
+    success_url = '/labels/'
+
+
+class LabelUpdateView(LoginRequiredMixin, UpdateView):
+    model = Label
+    fields = ['name']
+    template_name = 'label_update.html'
+    success_url = '/labels/'
+
+
+class LabelDeleteView(LoginRequiredMixin, DeleteView):
+    model = Label
+    template_name = 'label_delete.html'
+    success_url = '/labels/'

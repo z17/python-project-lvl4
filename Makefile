@@ -10,3 +10,9 @@ translate-make:
 
 translate-compile:
 	django-admin compilemessages
+
+migrations-create:
+	python ./manage.py makemigrations
+
+migrations-run:
+	python ./manage.py migrate
