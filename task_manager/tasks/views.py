@@ -1,7 +1,7 @@
-import django_filters
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters import FilterSet, BooleanFilter
 from django.utils.translation import gettext_lazy as _
 from django_filters.views import FilterView
@@ -22,7 +22,7 @@ class TaskFilter(FilterSet):
     def filter_self_tasks(self, queryset, name, value):
         if not value:
             return queryset
-        
+
         return queryset.filter(reporter=self.request.user)
 
     class Meta:
