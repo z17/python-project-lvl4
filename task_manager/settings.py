@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import rollbar
 import os
+
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 
 from pathlib import Path
@@ -134,9 +136,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
-
-LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = reverse_lazy('login')
 
 ROLLBAR = {
     'access_token':  os.getenv('ROLLBAR_ACCESS_TOKEN'),
