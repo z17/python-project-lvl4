@@ -1,0 +1,7 @@
+{% extends 'delete.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block title %}{% translate "Delete status" %}{% endblock %}
+
+{% block form_sure %}{% translate "Are you sure you want to delete status" %} "{{ object.name }}" ?{% endblock %}

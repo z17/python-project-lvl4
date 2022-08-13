@@ -6,24 +6,24 @@ from task_manager.statuses.models import Status
 
 class StatusListView(LoginRequiredMixin, ListView):
     model = Status
-    template_name = 'status_list.html'
+    template_name = 'statuses/status_list.html'
 
 
 class StatusCreateView(LoginRequiredMixin, CreateView):
     model = Status
     fields = ['name']
-    template_name = 'status_create.html'
+    template_name = 'statuses/status_create.html'
     success_url = '/statuses/'
 
 
 class StatusUpdateView(LoginRequiredMixin, UpdateView):
     model = Status
     fields = ['name']
-    template_name = 'status_update.html'
+    template_name = 'statuses/status_update.html'
     success_url = '/statuses/'
 
 
 class StatusDeleteView(LoginRequiredMixin, DeleteView):
     model = Status
-    template_name = 'status_delete.html'
+    template_name = 'statuses/status_delete.html'
     success_url = '/statuses/'

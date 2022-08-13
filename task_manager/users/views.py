@@ -13,21 +13,21 @@ def users(request):
         'id'
     )
 
-    return render(request, 'users.html', context={
+    return render(request, 'users/users.html', context={
         'users': all_users
     })
 
 
 class UsersCreateView(CreateView):
     form_class = UserCreationForm
-    template_name = 'users_create.html'
+    template_name = 'users/users_create.html'
     success_url = '/users/login'
 
 
 class UsersUpdateView(UpdateView):
     model = get_user_model()
     form_class = UserCreationForm
-    template_name = 'users_update.html'
+    template_name = 'users/users_update.html'
     success_url = '/users/'
 
     def dispatch(self, request, *args, **kwargs):
@@ -38,7 +38,7 @@ class UsersUpdateView(UpdateView):
 
 class UsersDeleteView(DeleteView):
     model = get_user_model()
-    template_name = 'users_delete.html'
+    template_name = 'users/users_delete.html'
     success_url = '/users/'
 
     def dispatch(self, request, *args, **kwargs):
@@ -48,7 +48,7 @@ class UsersDeleteView(DeleteView):
 
 
 class UserLoginView(LoginView):
-    template_name = 'users_login.html'
+    template_name = 'users/users_login.html'
 
 
 class UserLogoutView(LogoutView):

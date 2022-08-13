@@ -7,19 +7,19 @@ from task_manager.tasks.models import Task
 
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
-    template_name = 'tasks_list.html'
+    template_name = 'tasks/tasks_list.html'
 
 
 class TaskView(DetailView):
     model = Task
 
-    template_name = 'task_detail.html'
+    template_name = 'tasks/task_detail.html'
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['name', 'status', 'text', 'assignee', 'labels']
-    template_name = 'task_create.html'
+    template_name = 'tasks/task_create.html'
 
     def form_valid(self, form):
         user = self.request.user
@@ -33,7 +33,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['name', 'status', 'text', 'assignee', 'labels']
-    template_name = 'task_update.html'
+    template_name = 'tasks/task_update.html'
 
     def form_valid(self, form):
         user = self.request.user
@@ -46,7 +46,7 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
-    template_name = 'task_delete.html'
+    template_name = 'tasks/task_delete.html'
     success_url = '/tasks/'
 
     def dispatch(self, request, *args, **kwargs):

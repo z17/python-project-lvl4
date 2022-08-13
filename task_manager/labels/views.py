@@ -6,24 +6,24 @@ from task_manager.labels.models import Label
 
 class LabelListView(LoginRequiredMixin, ListView):
     model = Label
-    template_name = 'label_list.html'
+    template_name = 'labels/label_list.html'
 
 
 class LabelCreateView(LoginRequiredMixin, CreateView):
     model = Label
     fields = ['name']
-    template_name = 'label_create.html'
+    template_name = 'labels/label_create.html'
     success_url = '/labels/'
 
 
 class LabelUpdateView(LoginRequiredMixin, UpdateView):
     model = Label
     fields = ['name']
-    template_name = 'label_update.html'
+    template_name = 'labels/label_update.html'
     success_url = '/labels/'
 
 
 class LabelDeleteView(LoginRequiredMixin, DeleteView):
     model = Label
-    template_name = 'label_delete.html'
+    template_name = 'labels/label_delete.html'
     success_url = '/labels/'
