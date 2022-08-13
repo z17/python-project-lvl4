@@ -2,13 +2,13 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-{% block title %}{% translate "Login" %}{% endblock %}
+{% block title %}{% translate "Log In" %}{% endblock %}
 
 {% block content %}
-<h1 class="pb-4">{% translate "Login" %}</h1>
+<h1 class="pb-4">{% translate "Log In" %}</h1>
 <form method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button class="btn btn-primary">{% translate "Login" %}</button>
+    <button class="btn btn-primary">{% translate "Log In button" %}</button>
 </form>
 {% endblock %}
