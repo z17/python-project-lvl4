@@ -14,7 +14,7 @@
         <div class="col p-2">{% translate "Name" %}</div>
         <div class="col p-2">{% translate "Links" %}</div>
     </div>
-    {% for one_user in users %}
+    {% for one_user in object_list %}
 
     <div class="row border-bottom">
         <div class="col-1 p-2"><p class="fw-bold">{{ one_user.id }}</p></div>

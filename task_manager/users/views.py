@@ -1,33 +1,26 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from django.views.generic import CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 
-from task_manager.users.models import UserCreationForm
+from task_manager.users.models import UserForm
+from django.contrib.auth.models import User
 
 
-def users(request):
-    all_users = User.objects.order_by(
-        'id'
-    )
-
-    return render(request, 'users/users.html', context={
-        'users': all_users
-    })
+class UserListView(ListView):
+    model = User
+    template_name = 'users/users.html'
 
 
 class UsersCreateView(CreateView):
-    form_class = UserCreationForm
+    form_class = UserForm
     template_name = 'users/users_create.html'
     success_url = '/users/login'
 
 
 class UsersUpdateView(UpdateView):
-    model = get_user_model()
-    form_class = UserCreationForm
+    model = User
+    form_class = UserForm
     template_name = 'users/users_update.html'
     success_url = '/users/'
 
@@ -38,7 +31,7 @@ class UsersUpdateView(UpdateView):
 
 
 class UsersDeleteView(DeleteView):
-    model = get_user_model()
+    model = User
     template_name = 'users/users_delete.html'
     success_url = '/users/'
 

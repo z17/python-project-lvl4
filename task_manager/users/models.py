@@ -1,10 +1,10 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
 
-class UserCreationForm(UserCreationForm):
+class UserForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,
         label=_('First Name')
@@ -19,5 +19,5 @@ class UserCreationForm(UserCreationForm):
     )
 
     class Meta(UserCreationForm.Meta):
-        model = get_user_model()
+        model = User
         fields = ('username', 'email', 'first_name', 'last_name')
