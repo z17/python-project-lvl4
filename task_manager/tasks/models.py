@@ -12,7 +12,7 @@ class Task(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     reporter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reporter_id")
     assignee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="assignee_id")
-    labels = models.ManyToManyField(Label, through='TaskLabel', through_fields=('task', 'label'))
+    labels = models.ManyToManyField(Label, through='TaskLabel', through_fields=('task', 'label'), blank=True)
 
     def get_absolute_url(self):
         return "/tasks/%i/" % self.id

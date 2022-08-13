@@ -1,13 +1,40 @@
+import django_filters
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django_filters import FilterSet, BooleanFilter
+from django.utils.translation import gettext_lazy as _
+from django_filters.views import FilterView
+from django import forms
 
 from task_manager.tasks.models import Task
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskFilter(FilterSet):
+    created_by_me = BooleanFilter(
+        field_name='creator',
+        label=_('Created by me'),
+        widget=forms.CheckboxInput,
+        method='filter_self_tasks',
+
+    )
+
+    def filter_self_tasks(self, queryset, name, value):
+        if not value:
+            return queryset
+        
+        return queryset.filter(reporter=self.request.user)
+
+    class Meta:
+        model = Task
+
+        fields = ['status', 'assignee', 'labels', 'created_by_me']
+
+
+class TaskListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/tasks_list.html'
+    filterset_class = TaskFilter
 
 
 class TaskView(DetailView):

@@ -2,11 +2,9 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-{% block title %}django-bootstrap4 sdf{% endblock %}
+{% block title %}{% translate "Main page title" %}{% endblock %}
 
 {% block content %}
-
-
-    <h1>{% translate "Welcome main text" %}</h1>
-    <p class="lead">{% translate "Welcome full text" %}</p>
+    <h1>{% translate "Main page title" %}</h1>
+    <p class="lead">{% translate "Main page description" %}</p>
 {% endblock %}
