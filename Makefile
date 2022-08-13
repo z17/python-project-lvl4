@@ -22,3 +22,6 @@ lint:
 
 test:
 	poetry run pytest -s
+
+install:
+	poetry install
