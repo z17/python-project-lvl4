@@ -61,7 +61,7 @@ msgstr "Регистрация"
 
 #: task_manager/templates/base.html:44
 msgid "Log In"
-msgstr "Войти"
+msgstr "Вход"
 
 #: task_manager/templates/delete.html:10
 #: task_manager/templates/labels/label_list.html:29
