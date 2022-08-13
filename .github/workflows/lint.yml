@@ -8,6 +8,7 @@ jobs:
       - name: install
         run:  |
           pip install poetry
+          poetry env use 3.8
           make install
       - name: lint
         run: make lint
