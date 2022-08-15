@@ -1,7 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.urls import reverse
-
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
 from django.utils.translation import gettext_lazy as _
