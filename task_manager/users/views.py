@@ -1,5 +1,8 @@
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 
@@ -41,10 +44,16 @@ class UsersDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class UserLoginView(LoginView):
+class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'users/users_login.html'
     next_page = reverse_lazy('index')
+    success_message = _('You are logged in')
 
 
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('index')
+
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        messages.info(request, _('You are logged out'))
+        return response

@@ -1,18 +1,38 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
+from django.utils.translation import gettext_lazy as _
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=90)
-    status = models.ForeignKey(Status, on_delete=models.PROTECT)
-    text = models.TextField()
+    name = models.CharField(max_length=90, verbose_name=_('Name'))
+    status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name=_('Status'))
+    text = models.TextField(verbose_name=_('Description'))
     date = models.DateTimeField(auto_now_add=True)
-    reporter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reporter_id")
-    assignee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="assignee_id")
-    labels = models.ManyToManyField(Label, through='TaskLabel', through_fields=('task', 'label'), blank=True)
+    reporter = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="reporter_id",
+        verbose_name=_('Reporter')
+    )
+    assignee = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="assignee_id",
+        blank=True,
+        null=True,
+        verbose_name=_('Assignee')
+    )
+    labels = models.ManyToManyField(
+        Label,
+        through='TaskLabel',
+        through_fields=('task', 'label'),
+        blank=True,
+        verbose_name=_('Labels')
+    )
 
     def get_absolute_url(self):
         return "/tasks/%i/" % self.id

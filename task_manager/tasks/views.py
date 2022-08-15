@@ -1,6 +1,5 @@
-
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters import FilterSet, BooleanFilter
 from django.utils.translation import gettext_lazy as _
@@ -43,38 +42,35 @@ class TaskView(DetailView):
     template_name = 'tasks/task_detail.html'
 
 
-class TaskCreateView(LoginRequiredMixin, CreateView):
+class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     fields = ['name', 'status', 'text', 'assignee', 'labels']
     template_name = 'tasks/task_create.html'
+    success_message = _('Task created')
 
     def form_valid(self, form):
         user = self.request.user
         form.instance.reporter = user
         return super(TaskCreateView, self).form_valid(form)
 
-    def get_success_url(self):
-        return reverse('task', args=(self.object.id,))
 
-
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     fields = ['name', 'status', 'text', 'assignee', 'labels']
     template_name = 'tasks/task_update.html'
+    success_message = _('Task updated')
 
     def form_valid(self, form):
         user = self.request.user
         form.instance.reporter = user
         return super(TaskUpdateView, self).form_valid(form)
 
-    def get_success_url(self):
-        return reverse('task', args=(self.object.id,))
 
-
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = 'tasks/task_delete.html'
     success_url = '/tasks/'
+    success_message = _('Task deleted')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object().reporter:
