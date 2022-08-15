@@ -43,6 +43,7 @@ class UsersDeleteView(DeleteView):
 
 class UserLoginView(LoginView):
     template_name = 'users/users_login.html'
+    next_page = reverse_lazy('index')
 
 
 class UserLogoutView(LogoutView):
