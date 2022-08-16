@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 01:05+0300\n"
+"POT-Creation-Date: 2022-08-17 01:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,14 +140,8 @@ msgid "Log In"
 msgstr "Вход"
 
 #: task_manager/templates/delete.html:10
-#: task_manager/templates/labels/label_list.html:29
-#: task_manager/templates/statuses/status_list.html:29
-#: task_manager/templates/tasks/task_detail.html:28
-#: task_manager/templates/tasks/tasks_list.html:44
-#: task_manager/templates/users/users.html:25
-#: task_manager/templates/users/users_delete.html:5
-msgid "Delete"
-msgstr "Удалить"
+msgid "Yes, delete"
+msgstr "Да, удалить"
 
 #: task_manager/templates/index.html:5 task_manager/templates/index.html:8
 msgid "Main page title"
@@ -170,7 +164,7 @@ msgstr "Создать"
 
 #: task_manager/templates/labels/label_delete.html:5
 msgid "Delete label"
-msgstr "Удалить метку"
+msgstr "Удаление метки"
 
 #: task_manager/templates/labels/label_delete.html:7
 msgid "Are you sure you want to delete label"
@@ -200,6 +194,14 @@ msgstr ""
 msgid "Update"
 msgstr "Изменить"
 
+#: task_manager/templates/labels/label_list.html:29
+#: task_manager/templates/statuses/status_list.html:29
+#: task_manager/templates/tasks/task_detail.html:28
+#: task_manager/templates/tasks/tasks_list.html:44
+#: task_manager/templates/users/users.html:25
+msgid "Delete"
+msgstr "Удалить"
+
 #: task_manager/templates/labels/label_list.html:33
 msgid "No labels"
 msgstr "Нет меток"
@@ -215,7 +217,7 @@ msgstr "Создать статус"
 
 #: task_manager/templates/statuses/status_delete.html:5
 msgid "Delete status"
-msgstr "Удалить статус"
+msgstr "Удаление статуса"
 
 #: task_manager/templates/statuses/status_delete.html:7
 msgid "Are you sure you want to delete status"
@@ -297,6 +299,10 @@ msgstr "Ссылки"
 #: task_manager/templates/users/users_create.html:7
 msgid "Sign Up button"
 msgstr "Зарегистрировать"
+
+#: task_manager/templates/users/users_delete.html:5
+msgid "Delete user"
+msgstr "Удаление пользователя"
 
 #: task_manager/templates/users/users_delete.html:7
 msgid "Are you sure you want to delete"

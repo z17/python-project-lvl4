@@ -7,6 +7,6 @@
 <form method="post">
     {% csrf_token %}
     <p>{% block form_sure %}(no content){% endblock %}</p>
-    <button class="btn btn-primary">{% translate "Delete" %}</button>
+    <button class="btn btn-primary">{% translate "Yes, delete" %}</button>
 </form>
 {% endblock %}
