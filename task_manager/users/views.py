@@ -15,17 +15,19 @@ class UserListView(ListView):
     template_name = 'users/users.html'
 
 
-class UsersCreateView(CreateView):
+class UsersCreateView(SuccessMessageMixin, CreateView):
     form_class = UserForm
     template_name = 'users/users_create.html'
     success_url = reverse_lazy('login')
+    success_message = _('User successfully registered')
 
 
-class UsersUpdateView(UpdateView):
+class UsersUpdateView(SuccessMessageMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'users/users_update.html'
     success_url = reverse_lazy('users:index')
+    success_message = _('User successfully updated')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object():
@@ -33,10 +35,11 @@ class UsersUpdateView(UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class UsersDeleteView(DeleteView):
+class UsersDeleteView(SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'users/users_delete.html'
     success_url = reverse_lazy('users:index')
+    success_message = _('User successfully deleted')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object():
