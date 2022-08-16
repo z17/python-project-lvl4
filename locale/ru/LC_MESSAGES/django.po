@@ -46,7 +46,7 @@ msgstr "Невозможно удалить метку, потому что он
 
 #: task_manager/statuses/views.py:23
 msgid "Status created"
-msgstr "Статус успещно создан"
+msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:31
 msgid "Status updated"
