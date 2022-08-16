@@ -20,32 +20,33 @@
     </form>
 </div>
 
-
-<div class="row border-bottom font-weight-bold">
-    <div class="col-1 p-2"><p class="fw-bold">{% translate "ID" %}</p></div>
-    <div class="col p-2">{% translate "Name" %}</div>
-    <div class="col p-2">{% translate "Status" %}</div>
-    <div class="col p-2">{% translate "Reporter" %}</div>
-    <div class="col p-2">{% translate "Assignee" %}</div>
-    <div class="col p-2">{% translate "Date" %}</div>
-    <div class="col p-2"></div>
-</div>
-{% for task in filter.qs %}
-<div class="row border-bottom">
-    <div class="col-1 p-2"><p class="fw-bold">{{task.id}}</p></div>
-    <div class="col p-2"><a href="/tasks/{{task.id}}/">{{task.name}}</a></div>
-    <div class="col p-2">{{task.status.name}}</div>
-    <div class="col p-2">{{task.reporter}}</div>
-    <div class="col p-2">{{task.assignee}}</div>
-    <div class="col p-2">{{task.date}}</div>
-    <div class="col p-2">
-        <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
-        {% if user == task.reporter %}
-        <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
-        {% endif %}
-    </div>
-</div>
-{% empty %}
-<div class="row">{% translate "No tasks" %}</div>
-{% endfor %}
+<table class="table">
+    <tr class="font-weight-bold">
+        <td>{% translate "ID" %}</td>
+        <td>{% translate "Name" %}</td>
+        <td>{% translate "Status" %}</td>
+        <td>{% translate "Reporter" %}</td>
+        <td>{% translate "Assignee" %}</td>
+        <td>{% translate "Date" %}</td>
+        <td></td>
+    </tr>
+    {% for task in filter.qs %}
+    <tr>
+        <td>{{task.id}}</td>
+        <td><a href="/tasks/{{task.id}}/">{{task.name}}</a></td>
+        <td>{{task.status.name}}</td>
+        <td>{{task.reporter}}</td>
+        <td>{{task.assignee}}</td>
+        <td>{{task.date}}</td>
+        <td>
+            <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
+            {% if user == task.reporter %}
+            <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <div class="row">{% translate "No tasks" %}</div>
+    {% endfor %}
+</table>
 {% endblock %}

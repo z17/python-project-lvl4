@@ -14,23 +14,24 @@
     <div class="row mb-4">
         <a class="btn btn-primary" href="/statuses/create/">{% translate "Create status" %}</a>
     </div>
-    <div class="row border-bottom font-weight-bold">
-        <div class="col-1  p-2"><p class="fw-bold">{% translate "ID" %}</p></div>
-        <div class="col-9 p-2">{% translate "Name" %}</div>
-        <div class="col  p-2"></div>
-    </div>
-    {% for status in object_list %}
-
-    <div class="row border-bottom">
-        <div class="col-1 p-2"><p class="fw-bold">{{status.id}}</p></div>
-        <div class="col-9 p-2">{{status.name}}</div>
-        <div class="col p-2">
-            <a href="/statuses/{{status.id}}/update/">{% translate "Update" %}</a><br>
-            <a href="/statuses/{{status.id}}/delete">{% translate "Delete" %}</a>
-        </div>
-    </div>
-    {% empty %}
-    <div>{% translate "No statuses" %}</div>
-    {% endfor %}
+    <table class="table">
+        <tr class="font-weight-bold">
+            <td>{% translate "ID" %}</td>
+            <td>{% translate "Name" %}</td>
+            <td></td>
+        </tr>
+        {% for status in object_list %}
+        <tr>
+            <td>{{status.id}}</td>
+            <td>{{status.name}}</td>
+            <td>
+                <a href="/statuses/{{status.id}}/update/">{% translate "Update" %}</a><br>
+                <a href="/statuses/{{status.id}}/delete">{% translate "Delete" %}</a>
+            </td>
+        </tr>
+        {% empty %}
+        <div>{% translate "No statuses" %}</div>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}

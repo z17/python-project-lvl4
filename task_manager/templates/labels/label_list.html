@@ -14,23 +14,25 @@
     <div class="row mb-4">
         <a class="btn btn-primary" href="/labels/create/">{% translate "Create label" %}</a>
     </div>
-    <div class="row border-bottom font-weight-bold">
-        <div class="col-1  p-2"><p class="fw-bold">{% translate "ID" %}</p></div>
-        <div class="col-9 p-2">{% translate "Name" %}</div>
-        <div class="col  p-2"></div>
-    </div>
-    {% for label in object_list %}
+    <table class="table">
+        <tr class="font-weight-bold">
+            <td>{% translate "ID" %}</td>
+            <td>{% translate "Name" %}</td>
+            <td></td>
+        </tr>
+        {% for label in object_list %}
 
-    <div class="row border-bottom">
-        <div class="col-1 p-2"><p class="fw-bold">{{label.id}}</p></div>
-        <div class="col-9 p-2">{{label.name}}</div>
-        <div class="col p-2">
-            <a href="/labels/{{label.id}}/update/">{% translate "Update" %}</a><br>
-            <a href="/labels/{{label.id}}/delete">{% translate "Delete" %}</a>
-        </div>
-    </div>
-    {% empty %}
-    <div>{% translate "No labels" %}</div>
-    {% endfor %}
+        <tr>
+            <td>{{label.id}}</td>
+            <td>{{label.name}}</td>
+            <td>
+                <a href="/labels/{{label.id}}/update/">{% translate "Update" %}</a><br>
+                <a href="/labels/{{label.id}}/delete">{% translate "Delete" %}</a>
+            </td>
+        </tr>
+        {% empty %}
+        <div>{% translate "No labels" %}</div>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}
