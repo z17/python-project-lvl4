@@ -18,14 +18,14 @@ class UserListView(ListView):
 class UsersCreateView(CreateView):
     form_class = UserForm
     template_name = 'users/users_create.html'
-    success_url = '/users/login'
+    success_url = reverse_lazy('login')
 
 
 class UsersUpdateView(UpdateView):
     model = User
     form_class = UserForm
     template_name = 'users/users_update.html'
-    success_url = '/users/'
+    success_url = reverse_lazy('users:index')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object():
@@ -36,7 +36,7 @@ class UsersUpdateView(UpdateView):
 class UsersDeleteView(DeleteView):
     model = User
     template_name = 'users/users_delete.html'
-    success_url = '/users/'
+    success_url = reverse_lazy('users:index')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object():

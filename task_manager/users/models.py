@@ -13,11 +13,7 @@ class UserForm(UserCreationForm):
         required=True,
         label=_("Second Name")
     )
-    email = forms.EmailField(
-        required=True,
-        label=_("Email")
-    )
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name')
+        fields = ('username', 'first_name', 'last_name')
