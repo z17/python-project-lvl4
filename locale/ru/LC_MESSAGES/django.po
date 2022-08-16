@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 00:56+0300\n"
+"POT-Creation-Date: 2022-08-17 01:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,33 +28,37 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/labels/views.py:20
+#: task_manager/labels/views.py:23
 msgid "Label created"
-msgstr "Метка создана"
+msgstr "Метка успешно создана"
 
-#: task_manager/labels/views.py:28
+#: task_manager/labels/views.py:31
 msgid "Label updated"
-msgstr "Метка обновлена"
+msgstr "Метка успешно изменена"
 
-#: task_manager/labels/views.py:35
+#: task_manager/labels/views.py:38
 msgid "Label deleted"
-msgstr "Метка удалена"
+msgstr "Метка успешно удалена"
 
-#: task_manager/statuses/views.py:22
+#: task_manager/labels/views.py:44
+msgid "Unable to delete label because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
+
+#: task_manager/statuses/views.py:23
 msgid "Status created"
-msgstr "Статус создан"
+msgstr "Статус успещно создан"
 
-#: task_manager/statuses/views.py:30
+#: task_manager/statuses/views.py:31
 msgid "Status updated"
-msgstr "Статус обновлен"
+msgstr "Статус успешно обновлен"
 
-#: task_manager/statuses/views.py:37
+#: task_manager/statuses/views.py:38
 msgid "Status deleted"
-msgstr "Статус удален"
+msgstr "Статус успешно удален"
 
-#: task_manager/statuses/views.py:41
+#: task_manager/statuses/views.py:44
 msgid "Unable to delete status because it is in use"
-msgstr ""
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: task_manager/tasks/models.py:10
 #: task_manager/templates/tasks/task_detail.html:10
@@ -320,7 +324,7 @@ msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:30
 msgid "User successfully updated"
-msgstr "Пользователь успешно обновлен"
+msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:42
 msgid "User successfully deleted"
