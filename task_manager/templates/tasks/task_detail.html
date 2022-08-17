@@ -9,7 +9,7 @@
     <h1 class="pb-4">{% translate "Task" %}: {{task.id}} {{task.name}}</h1>
     <p><span class="font-weight-bold">{% translate "Status" %}:</span> {{task.status.name}}</p>
     <p><span class="font-weight-bold">{% translate "Created" %}:</span> {{task.date}}</p>
-    <p><span class="font-weight-bold">{% translate "Assignee" %}:</span> {{task.assignee}}</p>
+    <p><span class="font-weight-bold">{% translate "Assignee" %}:</span> {{task.executor}}</p>
     <p><span class="font-weight-bold">{% translate "Reporter" %}:</span> {{task.reporter}}</p>
     {% if task.labels.all %}
     <p><span class="font-weight-bold">{% translate "Labels" %}:</span>
@@ -21,10 +21,10 @@
     </ul>
     {% endif %}
     <h2>{% translate "Description" %}</h2>
-    <p>{{task.text}}</p>
+    <p>{{task.description}}</p>
     <p>
         <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
-        {% if user == task.reporter %}
+        {% if user.id == task.reporter.id %}
         <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
         {% endif %}
     </p>

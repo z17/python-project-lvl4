@@ -10,7 +10,7 @@ from task_manager.users.models import User
 class Task(models.Model):
     name = models.CharField(max_length=90, verbose_name=_('Name'))
     status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name=_('Status'))
-    text = models.TextField(verbose_name=_('Description'))
+    description = models.TextField(verbose_name=_('Description'))
     date = models.DateTimeField(auto_now_add=True)
     reporter = models.ForeignKey(
         User,
@@ -18,7 +18,7 @@ class Task(models.Model):
         related_name="reporter_id",
         verbose_name=_('Reporter')
     )
-    assignee = models.ForeignKey(
+    executor = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="assignee_id",

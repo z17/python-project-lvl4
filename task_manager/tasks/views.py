@@ -38,7 +38,7 @@ class TaskFilter(FilterSet):
     class Meta:
         model = Task
 
-        fields = ['status', 'assignee', 'label', 'created_by_me']
+        fields = ['status', 'executor', 'label', 'created_by_me']
 
 
 class TaskListView(LoginRequiredMixin, FilterView):
@@ -55,7 +55,7 @@ class TaskView(DetailView):
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
-    fields = ['name', 'status', 'text', 'assignee', 'labels']
+    fields = ['name', 'status', 'description', 'executor', 'labels']
     template_name = 'tasks/task_create.html'
     success_message = _('Task created')
     success_url = reverse_lazy('tasks:index')
@@ -68,9 +68,10 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
-    fields = ['name', 'status', 'text', 'assignee', 'labels']
+    fields = ['name', 'status', 'description', 'executor', 'labels']
     template_name = 'tasks/task_update.html'
     success_message = _('Task updated')
+    success_url = reverse_lazy('tasks:index')
 
 
 class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
