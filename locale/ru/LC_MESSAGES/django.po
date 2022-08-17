@@ -278,7 +278,7 @@ msgstr "Задачи"
 
 #: task_manager/templates/tasks/tasks_list.html:19
 msgid "Search"
-msgstr "Найти"
+msgstr "Показать"
 
 #: task_manager/templates/tasks/tasks_list.html:30
 msgid "Date"
