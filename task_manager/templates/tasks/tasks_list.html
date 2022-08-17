@@ -40,9 +40,7 @@
         <td>{{task.date}}</td>
         <td>
             <a href="/tasks/{{task.id}}/update/">{% translate "Update" %}</a><br>
-            {% if user == task.reporter %}
             <a href="/tasks/{{task.id}}/delete">{% translate "Delete" %}</a>
-            {% endif %}
         </td>
     </tr>
     {% empty %}
