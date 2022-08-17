@@ -4,11 +4,12 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
-from django_filters import FilterSet, BooleanFilter
+from django_filters import FilterSet, BooleanFilter, ModelChoiceFilter
 from django.utils.translation import gettext_lazy as _
 from django_filters.views import FilterView
 from django import forms
 
+from task_manager.labels.models import Label
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
 
@@ -22,6 +23,12 @@ class TaskFilter(FilterSet):
 
     )
 
+    label = ModelChoiceFilter(
+        queryset=Label.objects.all(),
+        field_name='labels',
+        label=_('Label'),
+    )
+
     def filter_self_tasks(self, queryset, name, value):
         if not value:
             return queryset
@@ -31,7 +38,7 @@ class TaskFilter(FilterSet):
     class Meta:
         model = Task
 
-        fields = ['status', 'assignee', 'labels', 'created_by_me']
+        fields = ['status', 'assignee', 'label', 'created_by_me']
 
 
 class TaskListView(LoginRequiredMixin, FilterView):
