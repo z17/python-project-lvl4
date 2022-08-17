@@ -4,6 +4,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
 
+class User(User):
+    def __str__(self):
+        return self.get_full_name()
+
+
 class UserForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,

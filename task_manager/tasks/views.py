@@ -7,6 +7,7 @@ from django_filters.views import FilterView
 from django import forms
 
 from task_manager.tasks.models import Task
+from task_manager.users.models import User
 
 
 class TaskFilter(FilterSet):
@@ -50,7 +51,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         user = self.request.user
-        form.instance.reporter = user
+        form.instance.reporter = User.objects.get(id=user.id)
         return super(TaskCreateView, self).form_valid(form)
 
 
@@ -59,11 +60,6 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     fields = ['name', 'status', 'text', 'assignee', 'labels']
     template_name = 'tasks/task_update.html'
     success_message = _('Task updated')
-
-    def form_valid(self, form):
-        user = self.request.user
-        form.instance.reporter = user
-        return super(TaskUpdateView, self).form_valid(form)
 
 
 class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):

@@ -6,8 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 
-from task_manager.users.models import UserForm
-from django.contrib.auth.models import User
+from task_manager.users.models import UserForm, User
 
 
 class UserListView(ListView):

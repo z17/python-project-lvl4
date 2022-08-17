@@ -1,8 +1,10 @@
 from django.db import models
-from django.conf import settings
+
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
 from django.utils.translation import gettext_lazy as _
+
+from task_manager.users.models import User
 
 
 class Task(models.Model):
@@ -11,13 +13,13 @@ class Task(models.Model):
     text = models.TextField(verbose_name=_('Description'))
     date = models.DateTimeField(auto_now_add=True)
     reporter = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
         related_name="reporter_id",
         verbose_name=_('Reporter')
     )
     assignee = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
         related_name="assignee_id",
         blank=True,
