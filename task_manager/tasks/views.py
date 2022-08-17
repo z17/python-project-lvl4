@@ -51,6 +51,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     fields = ['name', 'status', 'text', 'assignee', 'labels']
     template_name = 'tasks/task_create.html'
     success_message = _('Task created')
+    success_url = reverse_lazy('tasks:index')
 
     def form_valid(self, form):
         user = self.request.user
