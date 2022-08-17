@@ -1,6 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
@@ -29,8 +30,10 @@ class UsersUpdateView(SuccessMessageMixin, UpdateView):
     success_message = _('User successfully updated')
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user != self.get_object():
-            return self.handle_no_permission()
+        if request.user.id != self.get_object().id:
+            messages.error(self.request, _('Access denied'))
+            return redirect(reverse_lazy('index'))
+
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -41,8 +44,9 @@ class UsersDeleteView(SuccessMessageMixin, DeleteView):
     success_message = _('User successfully deleted')
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user != self.get_object():
-            return self.handle_no_permission()
+        if request.user.id != self.get_object().id:
+            messages.error(self.request, _('Access denied'))
+            return redirect(reverse_lazy('index'))
         return super().dispatch(request, *args, **kwargs)
 
 

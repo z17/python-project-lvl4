@@ -20,7 +20,7 @@
         <td>{{ one_user.get_full_name }}</td>
         <td>
 
-            {% if user == one_user %}
+            {% if user.id == one_user.id %}
             <a href="/users/{{one_user.id}}/update/">{% translate "Update" %}</a><br>
             <a href="/users/{{one_user.id}}/delete">{% translate "Delete" %}</a>
 
