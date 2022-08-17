@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-18 00:33+0300\n"
+"POT-Creation-Date: 2022-08-18 00:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,11 +96,11 @@ msgstr "Только свои задачи"
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/tasks/views.py:61
+#: task_manager/tasks/views.py:60
 msgid "Task created"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/views.py:74
+#: task_manager/tasks/views.py:73
 msgid "Task updated"
 msgstr "Задача успешно изменена"
 
@@ -108,10 +108,9 @@ msgstr "Задача успешно изменена"
 msgid "Task deleted"
 msgstr "Задача успешно удалена"
 
-#: task_manager/tasks/views.py:85 task_manager/users/views.py:34
-#: task_manager/users/views.py:48
-msgid "Access denied"
-msgstr ""
+#: task_manager/tasks/views.py:85
+msgid "A task can only be deleted by its author"
+msgstr "Задачу может удалить только её автор"
 
 #: task_manager/templates/base.html:8
 msgid "MenuNavigation"
@@ -148,7 +147,7 @@ msgstr "Регистрация"
 msgid "Log In"
 msgstr "Вход"
 
-#: task_manager/templates/delete.html:10
+#: task_manager/templates/common/delete.html:10
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
@@ -206,7 +205,7 @@ msgstr "Изменить"
 #: task_manager/templates/labels/label_list.html:30
 #: task_manager/templates/statuses/status_list.html:29
 #: task_manager/templates/tasks/task_detail.html:28
-#: task_manager/templates/tasks/tasks_list.html:44
+#: task_manager/templates/tasks/tasks_list.html:43
 #: task_manager/templates/users/users.html:25
 msgid "Delete"
 msgstr "Удалить"
@@ -284,7 +283,7 @@ msgstr "Показать"
 msgid "Date"
 msgstr "Дата"
 
-#: task_manager/templates/tasks/tasks_list.html:49
+#: task_manager/templates/tasks/tasks_list.html:47
 msgid "No tasks"
 msgstr "Нет задач"
 
@@ -340,6 +339,10 @@ msgstr "Пользователь успешно зарегистрирован"
 #: task_manager/users/views.py:30
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменён"
+
+#: task_manager/users/views.py:34 task_manager/users/views.py:48
+msgid "You do not have permission to modify another user."
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/users/views.py:44
 msgid "User successfully deleted"

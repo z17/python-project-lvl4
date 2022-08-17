@@ -81,7 +81,7 @@ class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_message = _('Task deleted')
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user != self.get_object().reporter:
-            messages.error(self.request, _('Access denied'))
-            return redirect(reverse_lazy('index'))
+        if request.user.id != self.get_object().reporter.id:
+            messages.error(self.request, _('A task can only be deleted by its author'))
+            return redirect(reverse_lazy('tasks:index'))
         return super().dispatch(request, *args, **kwargs)

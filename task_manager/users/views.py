@@ -31,8 +31,8 @@ class UsersUpdateView(SuccessMessageMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.id != self.get_object().id:
-            messages.error(self.request, _('Access denied'))
-            return redirect(reverse_lazy('index'))
+            messages.error(self.request, _('You do not have permission to modify another user.'))
+            return redirect(reverse_lazy('users:index'))
 
         return super().dispatch(request, *args, **kwargs)
 
@@ -45,8 +45,8 @@ class UsersDeleteView(SuccessMessageMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.id != self.get_object().id:
-            messages.error(self.request, _('Access denied'))
-            return redirect(reverse_lazy('index'))
+            messages.error(self.request, _('You do not have permission to modify another user.'))
+            return redirect(reverse_lazy('users:index'))
         return super().dispatch(request, *args, **kwargs)
 
 
