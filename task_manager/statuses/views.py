@@ -31,7 +31,7 @@ class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('Status updated')
 
 
-class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(SuccessMessageMixin, DeleteView):
     model = Status
     template_name = 'statuses/status_delete.html'
     success_url = reverse_lazy('statuses:index')
@@ -39,7 +39,7 @@ class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
     def post(self, request, *args, **kwargs):
         try:
-            return self.delete(request, *args, **kwargs)
+            return super().post(request, *args, **kwargs)
         except ProtectedError:
             messages.error(self.request, _('Unable to delete status because it is in use'))
             return redirect('statuses:index')
