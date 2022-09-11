@@ -25,3 +25,6 @@ test:
 
 install:
 	poetry install
+
+deploy:
+	git push heroku main
