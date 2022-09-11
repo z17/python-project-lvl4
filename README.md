@@ -11,3 +11,7 @@
 1. Copy .env.example to .env with new secret key
 2. Run migrations - `make migrations-run`
 3. Run dev server - `make run-dev`
+
+## Where to find app
+
+https://task-manager-95691.herokuapp.com/
