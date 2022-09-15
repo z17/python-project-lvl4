@@ -47,9 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'task_manager',
     'bootstrap4',
     'django_filters',
+    'task_manager',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +158,5 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 rollbar.init(**ROLLBAR)
+
+FIXTURE_DIRS = ('tests/fixtures/',)

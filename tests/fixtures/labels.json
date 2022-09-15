@@ -1,0 +1,9 @@
+[
+  {
+    "model": "task_manager.label",
+    "pk": 1,
+    "fields": {
+      "name": "test label"
+    }
+  }
+]
