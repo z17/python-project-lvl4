@@ -46,4 +46,4 @@ class UserTestCase(TestCase):
 
         self.assertRedirects(response, '/tasks/')
         with self.assertRaises(Exception):
-            a = Task.objects.get(pk=self.task.pk)
+            Task.objects.get(pk=self.task.pk)
