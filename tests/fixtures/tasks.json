@@ -23,5 +23,23 @@
     "fields": {
       "user_ptr_id": 1
     }
+  },
+  {
+    "model": "task_manager.status",
+    "pk": 1,
+    "fields": {
+      "name": "test status"
+    }
+  },
+  {
+    "model": "task_manager.task",
+    "pk": 1,
+    "fields": {
+      "name": "test task fixture",
+      "status_id": 1,
+      "description": "Wow, some descr",
+      "reporter_id": 1,
+      "date": "2022-09-15T16:22:37.243Z"
+    }
   }
 ]

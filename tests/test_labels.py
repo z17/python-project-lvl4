@@ -23,11 +23,21 @@ class UserTestCase(TestCase):
 
         response = self.client.post(url, new_label, follow=True)
         self.assertRedirects(response, '/labels/')
-        created_label = Label.objects.get(name=new_label['name'])
-        self.assertEqual(created_label.name, new_label['name'])
+        Label.objects.get(name=new_label['name'])
 
     def test_update_label(self):
-        print('')
+        url = reverse_lazy('labels:update', args=(self.label1.pk,))
+        new_label_name = {
+            'name': 'test_label 36435',
+        }
+        response = self.client.post(url, new_label_name, follow=True)
+        self.assertRedirects(response, '/labels/')
+        updated_label = Label.objects.get(pk=self.label1.pk)
+        self.assertEqual(updated_label.name, new_label_name['name'])
 
     def test_delete_label(self):
-        print('')
+        url = reverse_lazy('labels:delete', args=(self.label1.id,))
+        self.client.post(url, follow=True)
+
+        with self.assertRaises(Exception):
+            Label.objects.get(pk=self.label1.pk)
