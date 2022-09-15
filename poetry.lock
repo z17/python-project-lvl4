@@ -91,14 +91,6 @@ tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.1
 toml = ["tomli"]
 
 [[package]]
-name = "dj-database-url"
-version = "0.5.0"
-description = "Use Database URLs in your Django Application."
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "django"
 version = "4.1.1"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -380,7 +372,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "1e8e3a217c6b41c376401dc3f769f0d0691d9e9e7ca939273885b9fe29a882ce"
+content-hash = "966691ba69716f525c572bdb03c17fc2f865c7959f5c73118e45d8bec9bbcefb"
 
 [metadata.files]
 asgiref = []
@@ -391,7 +383,6 @@ certifi = []
 charset-normalizer = []
 colorama = []
 coverage = []
-dj-database-url = []
 django = []
 django-bootstrap4 = []
 django-filter = []
